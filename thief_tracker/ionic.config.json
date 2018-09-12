@@ -1,0 +1,7 @@
+{
+  "name": "thief_tracker",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

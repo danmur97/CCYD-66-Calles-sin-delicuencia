@@ -1,5 +1,15 @@
-<ion-tabs>
-  <ion-tab [root]="tab1Root" [tabTitle]="tab1Title" tabIcon="alert"></ion-tab>
-  <ion-tab [root]="tab2Root" [tabTitle]="tab2Title" tabIcon="book"></ion-tab>
-  <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" tabIcon="map"></ion-tab>
+<ion-header>
+  <ion-buttons>
+      <button ion-button>
+          <ion-icon name="home">Left Icon</ion-icon>
+      </button>
+      <button ion-button>
+          <ion-icon name="home">Left Icon</ion-icon>
+      </button>
+  </ion-buttons>
+</ion-header>
+<ion-tabs tabsPlacement="top">
+    <ion-tab [root]="tab1Root" [tabTitle]="tab1Title" tabIcon="alert"></ion-tab>
+    <ion-tab [root]="tab2Root" [tabTitle]="tab2Title" tabIcon="book"></ion-tab>
+    <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" tabIcon="map"></ion-tab>
 </ion-tabs>

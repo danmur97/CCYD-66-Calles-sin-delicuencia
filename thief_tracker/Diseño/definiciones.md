@@ -2,8 +2,9 @@
 ## (serv)
 ### Descripcion
 * Aporta la informacion necesaria a mostrar en el tutorial
+* Boton de skip
 ## (GUI)
-* Enlazar con el servicio
+* Enlazar con el servicio de Tutorial
 
 
 # Inscripcion 
@@ -11,7 +12,7 @@
 ### Descripcion
 * Obtiene los datos nesecarios del usuario para su inscripcion
 * Envia al Reporter los datos del usuario
-* Identifica si ya esta registrado para omitir
+* Identifica si ya esta registrado para omitir con ayuda de Saver
 ### Metodos
 * yaRegistrado()
 * inscribir(user_data)
@@ -23,13 +24,16 @@
 ## (serv)
 ### Descripcion
 * Guarda y recupera informacion
+* datos de usuario
+* settings data
+* alarmas de usuario 
 ### Metodos
 
 
 # Zona de alarma A
 ## (model)
 ### Descripcion
-* Objeto conteneor de datos de una zona de alarma
+* Objeto contenedor de datos de una zona de alarma
 ### Propiedades
 * radio
 * posicionGPS
@@ -54,6 +58,8 @@
 # Notificador
 ## (serv)
 * Muestra notificacion si se encuentra dendro de una zona de alarma
+## (GUI)
+* Numero de notificaciones de alarma en la zona
 
 
 # Map
@@ -86,3 +92,13 @@
 ### Descripcion
 * Avisar cuando el comando de voz se ejecute y dar alarma.
 * Permite cancelacion de la alarma.
+## (GUI)
+* boton de alarma
+
+# Ejecutar alarma
+## (serv)
+### Descripcion
+* Fase de transicion entre la activacion de la alarma y el reporte de la alarma
+* temporizador desendente, tiempo para cancelar la alarma
+## (GUI)
+* Popup o ventana de alerta con contador desendente para el reporte de la alarma

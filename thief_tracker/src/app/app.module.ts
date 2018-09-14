@@ -12,6 +12,16 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
+import { MapProvider } from '../providers/map/map';
+import { TutorialProvider } from '../providers/tutorial/tutorial';
+import { InscripcionProvider } from '../providers/inscripcion/inscripcion';
+import { SaverProvider } from '../providers/saver/saver';
+import { AdminZonaAProvider } from '../providers/admin-zona-a/admin-zona-a';
+import { NotificadorProvider } from '../providers/notificador/notificador';
+import { ReportadorProvider } from '../providers/reportador/reportador';
+import { GpsProvider } from '../providers/gps/gps';
+import { CmdAlarmaProvider } from '../providers/cmd-alarma/cmd-alarma';
+import { ExeAlarmaProvider } from '../providers/exe-alarma/exe-alarma';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -64,7 +74,17 @@ export function provideSettings(storage: Storage) {
     StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    MapProvider,
+    TutorialProvider,
+    InscripcionProvider,
+    SaverProvider,
+    AdminZonaAProvider,
+    NotificadorProvider,
+    ReportadorProvider,
+    GpsProvider,
+    CmdAlarmaProvider,
+    ExeAlarmaProvider
   ]
 })
 export class AppModule { }

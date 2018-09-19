@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ZonaA } from '../../models/zonaA';
+import { GpsProvider } from '../gps/gps';
 
 /*
   Generated class for the AdminZonaAProvider provider.
@@ -9,9 +11,21 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class AdminZonaAProvider {
+  
+  zonasA_user = []
+  zonasA_external = []
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private gps_provider:GpsProvider) {
     console.log('Hello AdminZonaAProvider Provider');
   }
+  nuevaZonaA(){
+    // let zA:ZonaA = new ZonaA(15,this.gps_provider.obtenerPosicion());
+    // this.zonasA_user.push(zA);
+  }
+  recepcionZonaA(zA:ZonaA){
+    this.zonasA_external.push(zA);
+  }
+  eliminarZonaA(zA:ZonaA){
 
+  }
 }

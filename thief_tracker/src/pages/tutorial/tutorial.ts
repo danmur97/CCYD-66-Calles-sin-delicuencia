@@ -51,7 +51,7 @@ export class TutorialPage {
   }
 
   startApp() {
-    this.navCtrl.setRoot('MapPage', {}, {
+    this.navCtrl.setRoot('WelcomePage', {}, {
       animate: true,
       direction: 'forward'
     });

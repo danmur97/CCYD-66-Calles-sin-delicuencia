@@ -10,6 +10,8 @@ import {
   Marker,
   Circle
 } from '@ionic-native/google-maps';
+import { AdminZonaAProvider } from '../../providers/admin-zona-a/admin-zona-a';
+import { GpsProvider } from '../../providers/gps/gps';
 /**
  * Generated class for the MapPage page.
  *
@@ -25,12 +27,13 @@ import {
 export class MapPage {
 
   map:GoogleMap;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  map_zonesA=[];
+  constructor(public navCtrl: NavController, public navParams: NavParams,private adminZonaA:AdminZonaAProvider,private gps_provider:GpsProvider) {
   }
 
   ionViewDidLoad() {
     this.loadMap();
+    console.log("Hi XD");
   }
   loadMap() {
     let mapOptions: GoogleMapOptions = {
@@ -39,6 +42,7 @@ export class MapPage {
            lat: 43.0741904,
            lng: -89.3809802
          }
+         //this.gps_provider.getPosition()
          
        }
     };

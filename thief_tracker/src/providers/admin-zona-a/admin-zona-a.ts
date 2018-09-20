@@ -15,12 +15,15 @@ export class AdminZonaAProvider {
   zonasA_user = []
   zonasA_external = []
 
-  constructor(public http: HttpClient, private gps_provider:GpsProvider) {
+  constructor(public http: HttpClient) {
     console.log('Hello AdminZonaAProvider Provider');
   }
   nuevaZonaA(){
     // let zA:ZonaA = new ZonaA(15,this.gps_provider.obtenerPosicion());
     // this.zonasA_user.push(zA);
+  }
+  obtenerZonas(){
+    return{};
   }
   recepcionZonaA(zA:ZonaA){
     this.zonasA_external.push(zA);

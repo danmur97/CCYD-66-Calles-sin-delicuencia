@@ -11,7 +11,7 @@ import {
   Circle
 } from '@ionic-native/google-maps';
 import { AdminZonaAProvider } from '../../providers/admin-zona-a/admin-zona-a';
-import { GpsProvider } from '../../providers/gps/gps';
+import { ZonaA } from '../../models/zonaA';
 /**
  * Generated class for the MapPage page.
  *
@@ -28,7 +28,7 @@ export class MapPage {
 
   map:GoogleMap;
   map_zonesA=[];
-  constructor(public navCtrl: NavController, public navParams: NavParams,private adminZonaA:AdminZonaAProvider,private gps_provider:GpsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private adminZonaA:AdminZonaAProvider) {
   }
 
   ionViewDidLoad() {
@@ -47,9 +47,26 @@ export class MapPage {
     };
 
     this.map = GoogleMaps.create('map_canvas', mapOptions);
+    let marker: Marker = this.map.addMarkerSync({
+      title: 'Alarm',
+      icon: 'blue',
+      animation: 'DROP',
+      position: {
+        lat: 53.0741904,
+        lng: -79.3809802
+      },
+      draggable: true
+  });
+    let z1 = new ZonaA(10,new Location());
+    z1.show(this.map);
+    // marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+    //   alert('clicked');
+    // });
 
-    marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-      alert('clicked');
-    });
+    // this.adminZonaA.actualizarZonas().subscribe(
+    //   (zona)=>{
+    //     this.map_zonesA.push(zona);
+    //   }
+    // );
   }
 }

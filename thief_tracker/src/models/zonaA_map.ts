@@ -3,8 +3,12 @@ import { Marker, Circle, GoogleMap } from "@ionic-native/google-maps";
 export class ZonaA_map {
     marker:Marker;
     circles:Circle[];
+    map:GoogleMap;
     constructor(map:GoogleMap) {
-        let marker: Marker = map.addMarkerSync({
+        this.map = map;
+    }
+    show(){
+        let marker: Marker = this.map.addMarkerSync({
             title: 'Alarm',
             icon: 'red',
             animation: 'DROP',
@@ -14,21 +18,21 @@ export class ZonaA_map {
             },
             draggable: true
         });
-        let circle3:Circle = map.addCircleSync({
+        let circle3:Circle = this.map.addCircleSync({
             center: marker.getPosition(),
             radius: 25,
             fillColor: "rgba(0,0,255,0.5)",
             strokeColor: "rgba(0,0,0,0)",
             strokeWidth: 1
         });
-        let circle2:Circle = map.addCircleSync({
+        let circle2:Circle = this.map.addCircleSync({
             center: marker.getPosition(),
             radius: 13,
             fillColor: "rgba(255,255,0,0.5)",
             strokeColor: "rgba(0,0,0,0)",
             strokeWidth: 1
         });
-        let circle1:Circle = map.addCircleSync({
+        let circle1:Circle = this.map.addCircleSync({
             center: marker.getPosition(),
             radius: 5,
             fillColor: "rgba(255,0,0,0.5)",
@@ -40,13 +44,15 @@ export class ZonaA_map {
         marker.bindTo("position",circle3,"center");
 
         this.marker = marker;
-        this.circles = [circle1,circle2,circle3];       
+        this.circles = [circle1,circle2,circle3];
     }
     remove(){
+        console.log("zAmap remove call");
         this.circles.forEach(element=>element.remove());
         this.marker.remove();   
     }
     move(value:boolean){
+        console.log("zAmap move call");
         this.marker.setDraggable(value);
     }
   }

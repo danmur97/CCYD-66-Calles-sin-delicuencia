@@ -12,6 +12,8 @@ import {
 } from '@ionic-native/google-maps';
 import { AdminZonaAProvider } from '../../providers/admin-zona-a/admin-zona-a';
 import { ZonaA } from '../../models/zonaA';
+import { GpsProvider } from '../../providers/gps/gps';
+import { MapProvider } from '../../providers/map/map';
 /**
  * Generated class for the MapPage page.
  *
@@ -25,48 +27,10 @@ import { ZonaA } from '../../models/zonaA';
   templateUrl: 'map.html',
 })
 export class MapPage {
-
-  map:GoogleMap;
-  map_zonesA=[];
-  constructor(public navCtrl: NavController, public navParams: NavParams,private adminZonaA:AdminZonaAProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private map:MapProvider) {
   }
-
   ionViewDidLoad() {
-    this.loadMap();
-    console.log("Hi XD");
-  }
-  loadMap() {
-    let mapOptions: GoogleMapOptions = {
-      camera: {
-         target: {
-           lat: 43.0741904,
-           lng: -89.3809802
-         }
-         //this.gps_provider.getPosition()
-       }
-    };
-
-    this.map = GoogleMaps.create('map_canvas', mapOptions);
-    let marker: Marker = this.map.addMarkerSync({
-      title: 'Alarm',
-      icon: 'blue',
-      animation: 'DROP',
-      position: {
-        lat: 53.0741904,
-        lng: -79.3809802
-      },
-      draggable: true
-  });
-    let z1 = new ZonaA(10,new Location());
-    z1.show(this.map);
-    // marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-    //   alert('clicked');
-    // });
-
-    // this.adminZonaA.actualizarZonas().subscribe(
-    //   (zona)=>{
-    //     this.map_zonesA.push(zona);
-    //   }
-    // );
+    this.map.loadMap();
   }
 }

@@ -20,9 +20,7 @@ export class TabsPage {
   tab2Title = "Historial";
   tab3Title = "Mapa";
 
-  constructor(public navCtrl: NavController, private exe:ExeAlarmaProvider) {
+  constructor(public navCtrl: NavController) {
   }
-  test(){
-    this.exe.showConfirmation();
-  }
+
 }

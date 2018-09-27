@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertController, LoadingController } from 'ionic-angular';
+import { AdminZonaAProvider } from '../admin-zona-a/admin-zona-a';
 
 /*
   Generated class for the ExeAlarmaProvider provider.
@@ -14,10 +15,13 @@ export class ExeAlarmaProvider {
   counter = 0;
   timer;
   confirm;
-  loader;
-  constructor(public http: HttpClient, private alerCtrl: AlertController,private loadingCtrl:LoadingController) {
+  // loader;
+
+  constructor(public http: HttpClient, private alerCtrl: AlertController,
+    private admZA:AdminZonaAProvider,private loadingCtrl:LoadingController) {
     console.log('Hello ExeAlarmaProvider Provider');
   }
+
   showConfirmation(){
     this.start();
 
@@ -57,6 +61,7 @@ export class ExeAlarmaProvider {
           this.counter--;
           // this.loader.data.content = this.counter+' segundos para activar la alarma';
         }else{
+          this.confirm.dismiss();
           this.exeAlarm();
         }
       }
@@ -64,11 +69,18 @@ export class ExeAlarmaProvider {
   }
   cancel(){
     // this.loader.dismiss();
-    this.confirm.dismiss();
     clearInterval(this.timer);
   }
   exeAlarm(){
     this.cancel();
+    // Crear ZA de usuario
+    // zA = zA_creator.newZA();
+    // this.admZA.loc_recepcionZonaA(zA);
     console.log("Alarma activada!!!!");
+  }
+  false_alarm(){
+    // Eliminar ultima ZA creada por el usuario
+    this.admZA.loc_eliminarZonaA(this.admZA.getLastZA());
+    console.log("Alarma desactivada");
   }
 }

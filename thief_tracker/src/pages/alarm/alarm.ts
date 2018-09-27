@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CmdAlarmaProvider } from '../../providers/cmd-alarma/cmd-alarma';
 
 /**
  * Generated class for the AlarmPage page.
@@ -15,11 +16,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AlarmPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private cmdAlarm:CmdAlarmaProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AlarmPage');
+  }
+  alarmBtnAction(){
+    this.cmdAlarm.alarm();
   }
 
 }

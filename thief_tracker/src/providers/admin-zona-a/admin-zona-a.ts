@@ -12,14 +12,17 @@ import { MapProvider } from '../map/map';
 */
 @Injectable()
 export class AdminZonaAProvider {
-  
+
   zonasA_user = []
   zonasA_external = []
 
   constructor(public http: HttpClient,private map:MapProvider) {
     console.log('Hello AdminZonaAProvider Provider');
   }
-  
+
+  getLastZA():ZonaA{
+    return this.zonasA_user[this.zonasA_user.length-1];
+  }
   loc_recepcionZonaA(zA:ZonaA){
     // Observer next method for local new zA event
 

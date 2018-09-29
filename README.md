@@ -1,7 +1,7 @@
 # Proyecto: CCYD-66-Calles-sin-delicuencia
 ## Integrantes:
 1. Daniel F. Murcia Rivera
-2. Hector Murcia Forero
+2. Héctor Murcia Forero
 3. Oswaldo Figueroa Rodriguez
 4. Carlos Fernando Varela Perez
 ## Descripcion

@@ -16,7 +16,6 @@ export class ZAgeneratorProvider {
     // private gps:GpsProvider
     console.log('Hello ZAgeneratorProvider Provider');
   }
-
   newZA(){
     return new ZonaA(20);
     // return new ZonaA(id,user,fecha,this.gps.getFakePosition());

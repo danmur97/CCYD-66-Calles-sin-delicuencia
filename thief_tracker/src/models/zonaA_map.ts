@@ -1,4 +1,5 @@
 import { Marker, Circle, GoogleMap } from "@ionic-native/google-maps";
+import { Posicion } from "./posicion";
 
 export class ZonaA_map {
     marker:Marker;
@@ -7,15 +8,13 @@ export class ZonaA_map {
     constructor(map:GoogleMap) {
         this.map = map;
     }
-    show(){
+    show(p:Posicion){
         let marker: Marker = this.map.addMarkerSync({
             title: 'Alarm',
             icon: 'red',
             animation: 'DROP',
-            position: {
-              lat: 43.0741904,
-              lng: -89.3809802
-            },
+            position: p,
+            // {lat: 43.0741904,lng: -89.3809802},
             draggable: true
         });
         let circle3:Circle = this.map.addCircleSync({

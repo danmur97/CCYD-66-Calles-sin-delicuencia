@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ZonaA } from '../../models/zonaA';
 import { GpsProvider } from '../gps/gps';
 import { MapProvider } from '../map/map';
+import { ReportadorProvider } from '../reportador/reportador';
 
 /*
   Generated class for the AdminZonaAProvider provider.
@@ -16,7 +17,8 @@ export class AdminZonaAProvider {
   zonasA_user = []
   zonasA_external = []
 
-  constructor(public http: HttpClient,private map:MapProvider) {
+  constructor(public http: HttpClient,private map:MapProvider,
+    private reporter:ReportadorProvider) {
     console.log('Hello AdminZonaAProvider Provider');
   }
 
@@ -25,11 +27,12 @@ export class AdminZonaAProvider {
   }
   loc_recepcionZonaA(zA:ZonaA){
     // Observer next method for local new zA event
-
+    // this.reporter.add(zA);
+    // this.zonasA_user.push(zA);
   }
   loc_eliminarZonaA(zA:ZonaA){
     // Observer next method for local deleted zA event
-
+    // this.reporter.remove(zA);
   }
   ext_recepcionZonaA(zA:ZonaA){
     // Observer next method for external new zA event
@@ -38,7 +41,18 @@ export class AdminZonaAProvider {
   }
   ext_eliminarZonaA(zA:ZonaA){
     // Observer next method for extenal deleted zA event
-    this.zonasA_external.splice(this.zonasA_external.indexOf(zA), 1);
-    this.map.remove(zA);
+    let i = this.zonasA_user.indexOf(zA);
+    let j = -1;
+    if(i >= 0){
+      this.zonasA_user.splice(i, 1);
+    }else{
+      j = this.zonasA_external.indexOf(zA);
+      if(j >= 0){
+        this.zonasA_external.splice(j, 1);
+      }
+    }
+    if(i >= 0 || j >= 0){
+      this.map.remove(zA);
+    }
   }
 }

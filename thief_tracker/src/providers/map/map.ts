@@ -16,7 +16,7 @@ export class MapProvider {
   map:GoogleMap;
   mapOptions: GoogleMapOptions;
 
-  constructor(public http: HttpClient,private gps:GpsProvider) {
+  constructor(public http: HttpClient) {
     console.log('Hello MapProvider Provider');
   }
   

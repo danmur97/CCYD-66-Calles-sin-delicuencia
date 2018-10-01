@@ -22,6 +22,7 @@ import { ReportadorProvider } from '../providers/reportador/reportador';
 import { GpsProvider } from '../providers/gps/gps';
 import { CmdAlarmaProvider } from '../providers/cmd-alarma/cmd-alarma';
 import { ExeAlarmaProvider } from '../providers/exe-alarma/exe-alarma';
+import { ZAgeneratorProvider } from '../providers/z-agenerator/z-agenerator';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -84,7 +85,8 @@ export function provideSettings(storage: Storage) {
     ReportadorProvider,
     GpsProvider,
     CmdAlarmaProvider,
-    ExeAlarmaProvider
+    ExeAlarmaProvider,
+    ZAgeneratorProvider
   ]
 })
 export class AppModule { }

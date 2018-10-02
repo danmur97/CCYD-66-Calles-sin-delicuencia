@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ExeAlarmaProvider } from '../../providers/exe-alarma/exe-alarma';
 
 /**
  * Generated class for the HistoryPage page.
@@ -15,7 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HistoryPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private exe:ExeAlarmaProvider) {
   }
 
   ionViewDidLoad() {

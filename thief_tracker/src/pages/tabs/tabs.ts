@@ -18,6 +18,7 @@ export class TabsPage {
   tab2Title = "Historial";
   tab3Title = "Mapa";
 
-  constructor(public navCtrl: NavController, public translateService: TranslateService) {
+  constructor(public navCtrl: NavController) {
   }
+
 }

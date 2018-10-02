@@ -22,13 +22,15 @@ import { GpsProvider } from '../providers/gps/gps';
 import { CmdAlarmaProvider } from '../providers/cmd-alarma/cmd-alarma';
 import { ExeAlarmaProvider } from '../providers/exe-alarma/exe-alarma';
 import { ZAgeneratorProvider } from '../providers/z-agenerator/z-agenerator';
+import { RecibidorProvider } from '../providers/recibidor/recibidor';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
 import { firebaseConfig } from '../keys/fb_config';
-import { RecibidorProvider } from '../providers/recibidor/recibidor';
+
+import { Geolocation } from '@ionic-native/geolocation';
+
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -81,6 +83,7 @@ export function provideSettings(storage: Storage) {
     Camera,
     SplashScreen,
     StatusBar,
+    Geolocation,
     AngularFireDatabase,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development

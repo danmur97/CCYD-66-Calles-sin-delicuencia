@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Posicion } from '../../models/posicion';
-// import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
 /*
   Generated class for the GpsProvider provider.
 
@@ -11,17 +11,21 @@ import { Posicion } from '../../models/posicion';
 @Injectable()
 export class GpsProvider {
 
-  constructor(public http: HttpClient) {
-    // private geolocation: Geolocation
+  constructor(public http: HttpClient,private geolocation: Geolocation) {
+    // 
     console.log('Hello GpsProvider Provider');
   }
-  getPosition(){
-    // this.geolocation.getCurrentPosition().then((resp) => {
-    //   // resp.coords.latitude
-    //   // resp.coords.longitude
-    //  }).catch((error) => {
-    //    console.log('Error getting location', error);
-    //  });
+  getPosition(successFx:(p:Posicion)=>any){
+    this.geolocation.getCurrentPosition().then(
+      (resp) => {
+        successFx(new Posicion(resp.coords.latitude,resp.coords.longitude));
+      }
+    ).catch(
+      (error) => {
+        successFx(new Posicion(43.0741904,-89.3809802));
+        console.log('Returning default location. Error getting location', error);
+      }
+     );
   }
   getFakePosition():Posicion{
     return new Posicion(43.0741904,-89.3809802);

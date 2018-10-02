@@ -17,7 +17,6 @@ export class RecibidorProvider {
   private afList: AngularFireList<any>;
   constructor(public http: HttpClient, private afDB: AngularFireDatabase, private zona:AdminZonaAProvider) {
     console.log('Hello RecividorProvider Provider');
-    this.init();
   }
   init(){
     this.afList = this.afDB.list('alarmas');

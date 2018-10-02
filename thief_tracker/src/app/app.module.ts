@@ -9,7 +9,6 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
-import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 import { MapProvider } from '../providers/map/map';
@@ -23,6 +22,13 @@ import { GpsProvider } from '../providers/gps/gps';
 import { CmdAlarmaProvider } from '../providers/cmd-alarma/cmd-alarma';
 import { ExeAlarmaProvider } from '../providers/exe-alarma/exe-alarma';
 import { ZAgeneratorProvider } from '../providers/z-agenerator/z-agenerator';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { firebaseConfig } from '../keys/fb_config';
+import { RecibidorProvider } from '../providers/recibidor/recibidor';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -60,7 +66,10 @@ export function provideSettings(storage: Storage) {
       }
     }),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -68,11 +77,11 @@ export function provideSettings(storage: Storage) {
   ],
   providers: [
     Api,
-    Items,
     User,
     Camera,
     SplashScreen,
     StatusBar,
+    AngularFireDatabase,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
@@ -86,7 +95,8 @@ export function provideSettings(storage: Storage) {
     GpsProvider,
     CmdAlarmaProvider,
     ExeAlarmaProvider,
-    ZAgeneratorProvider
+    ZAgeneratorProvider,
+    RecibidorProvider
   ]
 })
 export class AppModule { }

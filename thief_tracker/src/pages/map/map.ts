@@ -14,6 +14,7 @@ import { AdminZonaAProvider } from '../../providers/admin-zona-a/admin-zona-a';
 import { ZonaA } from '../../models/zonaA';
 import { GpsProvider } from '../../providers/gps/gps';
 import { MapProvider } from '../../providers/map/map';
+import { RecibidorProvider } from '../../providers/recibidor/recibidor';
 /**
  * Generated class for the MapPage page.
  *
@@ -28,7 +29,7 @@ import { MapProvider } from '../../providers/map/map';
 })
 export class MapPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private map:MapProvider) {
+    private map:MapProvider,private reciver:RecibidorProvider) {
   }
   ionViewDidLoad() {
     this.map.loadMap();

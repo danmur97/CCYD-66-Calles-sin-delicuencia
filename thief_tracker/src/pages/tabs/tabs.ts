@@ -3,8 +3,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController } from 'ionic-angular';
 
 import { Tab1Root, Tab2Root, Tab3Root } from '../';
-import { AdminZonaAProvider } from '../../providers/admin-zona-a/admin-zona-a';
-import { ExeAlarmaProvider } from '../../providers/exe-alarma/exe-alarma';
 
 @IonicPage()
 @Component({

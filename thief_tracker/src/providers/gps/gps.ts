@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Posicion } from '../../models/posicion';
 // import { Geolocation } from '@ionic-native/geolocation';
 /*
   Generated class for the GpsProvider provider.
@@ -10,7 +11,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class GpsProvider {
 
-  constructor(public http: HttpClient,private geolocation: Geolocation) {
+  constructor(public http: HttpClient) {
+    // private geolocation: Geolocation
     console.log('Hello GpsProvider Provider');
   }
   getPosition(){

@@ -12,12 +12,12 @@ import { ZonaA } from '../../models/zonaA';
 @Injectable()
 export class ZAgeneratorProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private gps:GpsProvider) {
     // private gps:GpsProvider
     console.log('Hello ZAgeneratorProvider Provider');
   }
   newZA(){
-    return new ZonaA(20);
+    return new ZonaA({id:"",usuario:"Danmur",fecha:"01.10.18",posicionGPS:this.gps.getFakePosition()});
     // return new ZonaA(id,user,fecha,this.gps.getFakePosition());
   }
 }

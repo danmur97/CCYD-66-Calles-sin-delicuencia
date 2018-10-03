@@ -5,6 +5,7 @@ import { GpsProvider } from '../gps/gps';
 import { MapProvider } from '../map/map';
 import { ReportadorProvider } from '../reportador/reportador';
 import { DebugToastProvider } from '../debug-toast/debug-toast';
+import { LoaderProvider } from '../loader/loader';
 
 /*
   Generated class for the AdminZonaAProvider provider.
@@ -17,18 +18,21 @@ export class AdminZonaAProvider {
 
   zonasA_user:ZonaA[] = [];
   zonasA_external:ZonaA[]  = [];
-  user = "Danmur";
+  user = "Hmurcia";
 
   constructor(public http: HttpClient,private map:MapProvider,
-    private reporter:ReportadorProvider,private dtConsole:DebugToastProvider) {
+    private reporter:ReportadorProvider,private loader:LoaderProvider,
+    private dtConsole:DebugToastProvider) {
     console.log('Hello AdminZonaAProvider Provider');
   }
   getLastZA():ZonaA{
     return this.zonasA_user[this.zonasA_user.length-1];
   }
+
   loc_recepcionZonaA(zA:ZonaA){
     // Observer next method for local new zA event
     this.reporter.add(zA);
+    this.loader.disp_loader('Publicando alarma...Espere por favor');
   }
   loc_eliminarZonaA(zA:ZonaA){
     // Observer next method for local deleted zA event
@@ -38,11 +42,10 @@ export class AdminZonaAProvider {
     // Observer next method for external new zA event
     console.log('External reception (added) called');
     if(zA.usuario == this.user){
-      // this.zonasA_user.push(zA)
       this.zonasA_user[zA.get_id()] = zA;
+      this.loader.dismiss_loader();
       this.dtConsole.log2('External reception (added): User zone recieved');
     }else{
-      // this.zonasA_external.push(zA);
       this.zonasA_external[zA.get_id()] = zA;
       this.dtConsole.log2('External reception (added): NOT user zone recieved'); 
     }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AlertController, LoadingController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 import { AdminZonaAProvider } from '../admin-zona-a/admin-zona-a';
 import { ZAgeneratorProvider } from '../z-agenerator/z-agenerator';
 
@@ -19,8 +19,7 @@ export class ExeAlarmaProvider {
   // loader;
 
   constructor(public http: HttpClient, private alerCtrl: AlertController,
-    private admZA:AdminZonaAProvider, private za_creator:ZAgeneratorProvider,
-    private loadingCtrl:LoadingController) {
+    private admZA:AdminZonaAProvider, private za_creator:ZAgeneratorProvider) {
     console.log('Hello ExeAlarmaProvider Provider');
   }
 
@@ -47,12 +46,6 @@ export class ExeAlarmaProvider {
       ]
     });
     this.confirm.present()
-    // this.loader = this.loadingCtrl.create({
-    //   spinner: 'hide',
-    //   showBackdrop: false,
-    //   content: this.counter+' segundos para activar la alarma'
-    // });
-    // this.loader.present()
   }
   start(){
     this.counter = 10;
@@ -69,7 +62,6 @@ export class ExeAlarmaProvider {
     ,1000);
   }
   cancel(){
-    // this.loader.dismiss();
     clearInterval(this.timer);
   }
   exeAlarm(){

@@ -31,6 +31,7 @@ import { firebaseConfig } from '../keys/fb_config';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { DebugToastProvider } from '../providers/debug-toast/debug-toast';
+import { LoaderProvider } from '../providers/loader/loader';
 
 
 // The translate loader needs to know where to load i18n files
@@ -101,7 +102,8 @@ export function provideSettings(storage: Storage) {
     ExeAlarmaProvider,
     ZAgeneratorProvider,
     RecibidorProvider,
-    DebugToastProvider
+    DebugToastProvider,
+    LoaderProvider
   ]
 })
 export class AppModule { }

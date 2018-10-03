@@ -22,7 +22,7 @@ export class ZAgeneratorProvider {
       (resolve, reject) => {
         this.gps.getPosition(false).then(
           (p) => {
-            resolve(new ZonaA({id:"",usuario:"Danmur",fecha:"01.10.18",posicionGPS:p}) );
+            resolve(new ZonaA({id:"",usuario:"Hmurcia",fecha:"01.10.18",posicionGPS:p}) );
           }
         );
       }

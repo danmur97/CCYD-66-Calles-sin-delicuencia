@@ -1,20 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  GoogleMapOptions,
-  CameraPosition,
-  MarkerOptions,
-  Marker,
-  Circle
-} from '@ionic-native/google-maps';
-import { AdminZonaAProvider } from '../../providers/admin-zona-a/admin-zona-a';
-import { ZonaA } from '../../models/zonaA';
-import { GpsProvider } from '../../providers/gps/gps';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
+
 import { MapProvider } from '../../providers/map/map';
 import { RecibidorProvider } from '../../providers/recibidor/recibidor';
+import { LoaderProvider } from '../../providers/loader/loader';
 /**
  * Generated class for the MapPage page.
  *
@@ -28,14 +17,19 @@ import { RecibidorProvider } from '../../providers/recibidor/recibidor';
   templateUrl: 'map.html',
 })
 export class MapPage {
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private map:MapProvider,private reciver:RecibidorProvider) {
+    private map:MapProvider,private reciver:RecibidorProvider,
+    private loader:LoaderProvider) {
   }
   ionViewDidLoad() {
+    this.loader.disp_loader('Cargando mapa...Se necesita habilitar GPS e internet');
     this.map.loadMap().then(
       (resolve)=>{
         this.reciver.init();
+        this.loader.dismiss_loader();
       }
     );
   }
+  
 }

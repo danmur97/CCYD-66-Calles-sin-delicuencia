@@ -74,10 +74,12 @@ export class ExeAlarmaProvider {
   }
   exeAlarm(){
     this.cancel();
-    // Crear ZA de usuario
-    let zA = this.za_creator.newZA();
-    this.admZA.loc_recepcionZonaA(zA);
-    console.log("Alarma activada!!!!");
+    this.za_creator.newZA().then(
+      (zA) => {
+        this.admZA.loc_recepcionZonaA(zA);
+        console.log("Alarma activada!!!!");
+      }
+    );
   }
   falseAlarm(){
     // Eliminar ultima ZA creada por el usuario

@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-// import { AdminZonaAProvider } from '../admin-zona-a/admin-zona-a';
 import { ZonaA } from '../../models/zonaA';
 /*
   Generated class for the ReportadorProvider provider.

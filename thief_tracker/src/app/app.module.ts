@@ -30,6 +30,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { firebaseConfig } from '../keys/fb_config';
 
 import { Geolocation } from '@ionic-native/geolocation';
+import { DebugToastProvider } from '../providers/debug-toast/debug-toast';
 
 
 // The translate loader needs to know where to load i18n files
@@ -99,7 +100,8 @@ export function provideSettings(storage: Storage) {
     CmdAlarmaProvider,
     ExeAlarmaProvider,
     ZAgeneratorProvider,
-    RecibidorProvider
+    RecibidorProvider,
+    DebugToastProvider
   ]
 })
 export class AppModule { }

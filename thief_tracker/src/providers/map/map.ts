@@ -52,7 +52,11 @@ export class MapProvider {
   }
   loadMap(reciverInit: Function) {
     this.reciverInit = reciverInit;
-    this.gps.getPosition(this.setMapTarget);
+    this.gps.getPosition(true).then(
+      (p) => {
+        this.setMapTarget(p);
+      }
+    );
     // marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
     //   alert('clicked');
     // });

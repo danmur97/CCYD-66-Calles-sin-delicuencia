@@ -4,6 +4,7 @@ import { ZonaA } from '../../models/zonaA';
 import { GpsProvider } from '../gps/gps';
 import { MapProvider } from '../map/map';
 import { ReportadorProvider } from '../reportador/reportador';
+import { DebugToastProvider } from '../debug-toast/debug-toast';
 
 /*
   Generated class for the AdminZonaAProvider provider.
@@ -18,7 +19,7 @@ export class AdminZonaAProvider {
   zonasA_external:ZonaA[]  = [];
   user = "Danmur";
   constructor(public http: HttpClient,private map:MapProvider,
-    private reporter:ReportadorProvider) {
+    private reporter:ReportadorProvider,private console:DebugToastProvider) {
     console.log('Hello AdminZonaAProvider Provider');
   }
 
@@ -35,36 +36,36 @@ export class AdminZonaAProvider {
   }
   ext_recepcionZonaA(zA:ZonaA){
     // Observer next method for external new zA event
-    console.log('External reception: added');
+    this.console.log2('External reception (added) called');
     if(zA.usuario == this.user){
       // this.zonasA_user.push(zA)
       this.zonasA_user[zA.get_id()] = zA;
-      console.log('--User zone recieved');
+      this.console.log('User zone recieved');
     }else{
       // this.zonasA_external.push(zA);
       this.zonasA_external[zA.get_id()] = zA;
-      console.log('--NOT user zone recieved'); 
+      this.console.log('NOT user zone recieved'); 
     }
     console.log(this.zonasA_user);
     this.map.show(zA);
   }
   ext_eliminarZonaA(zA:ZonaA){
     // Observer next method for extenal deleted zA event
-    console.log('External reception: deleted');
+    this.console.log2('External reception (deleted) called');
     let zA_user = this.zonasA_user[zA.get_id()];
     let zA_ext = this.zonasA_external[zA.get_id()];
     console.log(zA_user);
     console.log(zA_ext);
     if(!(zA_user == null)){
-      console.log('--User zone recieved');
+      this.console.log('User zone recieved');
       this.zonasA_user.splice(this.zonasA_user.indexOf(zA_user), 1);
       this.map.remove(zA_user);
     }else if(!(zA_ext == null)){
-      console.log('--NOT user zone recieved');
+      this.console.log('NOT user zone recieved');
       this.zonasA_external.splice(this.zonasA_external.indexOf(zA_ext), 1);
       this.map.remove(zA_ext);
     }else{
-      console.log('--Zone not found!');
+      this.console.log('Zone not found!');
     }
   }
 }

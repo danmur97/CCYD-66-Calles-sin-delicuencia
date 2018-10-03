@@ -17,7 +17,7 @@ export class ZAgeneratorProvider {
     console.log('Hello ZAgeneratorProvider Provider');
   }
 
-  newZA():Promise<ZonaA>{ 
+  newZA():Promise<ZonaA>{
     return new Promise(
       (resolve, reject) => {
         this.gps.getPosition(false).then(

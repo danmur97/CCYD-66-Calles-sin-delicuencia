@@ -16,12 +16,10 @@ export class MapProvider {
 
   map:GoogleMap;
   mapOptions: GoogleMapOptions;
-  reciverInit:Function;
 
   constructor(public http: HttpClient, private gps:GpsProvider) {
     console.log('Hello MapProvider Provider');
   }
-  
   show(zA:ZonaA){
     if (!(this.map == null)){
       zA.show(this.map);
@@ -43,18 +41,19 @@ export class MapProvider {
           target: p
         }
       };
-      this.map = GoogleMaps.create('map_canvas', this.mapOptions);
-      console.log("map created!");
-      let z1 = new ZonaA(12);
-      z1.show(this.map);
-      //this.reciverInit();
     }
   }
-  loadMap(reciverInit: Function) {
-    this.reciverInit = reciverInit;
-    this.gps.getPosition(true).then(
-      (p) => {
-        this.setMapTarget(p);
+  loadMap():Promise<boolean> {
+    return new Promise(
+      (resolve, reject) => {
+        this.gps.getPosition(true).then(
+          (p) => {
+            this.setMapTarget(p);
+            this.map = GoogleMaps.create('map_canvas', this.mapOptions);
+            console.log("map created!");
+            resolve(true);
+          }
+        );
       }
     );
     // marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {

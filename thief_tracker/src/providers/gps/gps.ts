@@ -12,7 +12,7 @@ import { DebugToastProvider } from '../debug-toast/debug-toast';
 @Injectable()
 export class GpsProvider {
   constructor(public http: HttpClient,private geolocation: Geolocation,
-    private console:DebugToastProvider) {
+    private dtConsole:DebugToastProvider) {
     console.log('Hello GpsProvider Provider');
   }
   getPosition(true_gps):Promise<Posicion>{//successFx:(p:Posicion,obj:any)=>any,obj:any
@@ -27,13 +27,13 @@ export class GpsProvider {
               // successFx(new Posicion(resp.coords.latitude,resp.coords.longitude),obj);
               resolve(new Posicion(resp.coords.latitude,resp.coords.longitude));
             }
-            this.console.log2('Success getting location');
+            this.dtConsole.log2('Success getting location');
           }
         ).catch(
           (error) => {
             // successFx(new Posicion(43.0741904,-89.3809802),obj);
             resolve(new Posicion(43.0741904,-89.3809802));
-            this.console.log2('Returning default location. Error getting location');
+            this.dtConsole.log2('Returning default location. Error getting location');
           }
         );
       }

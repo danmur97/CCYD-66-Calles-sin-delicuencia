@@ -15,20 +15,20 @@ import { DebugToastProvider } from '../debug-toast/debug-toast';
 */
 @Injectable()
 export class RecibidorProvider {
+
   private afList: AngularFireList<any>;
   
   constructor(public http: HttpClient, private afDB: AngularFireDatabase, 
-    private zona:AdminZonaAProvider, private console:DebugToastProvider) {
+    private zona:AdminZonaAProvider, private dtConsole:DebugToastProvider) {
     console.log('Hello RecividorProvider Provider');
-    this.init();
   }
   init(){
-    this.console.log('Receiver init');
+    this.dtConsole.log('Receiver init');
     this.afList = this.afDB.list('alarmas');
     
     this.afList.stateChanges(['child_added']).subscribe(
       item =>{
-        this.console.log2('Receiver detected: added data');
+        console.log('Receiver detected: added data');
         console.log(item);
         console.log('-------------');
 
@@ -39,7 +39,7 @@ export class RecibidorProvider {
     );
     this.afList.stateChanges(['child_removed']).subscribe(
       item =>{
-        this.console.log2('Receiver detected: removed data');
+        console.log('Receiver detected: removed data');
         console.log(item);
         console.log('-------------');
 

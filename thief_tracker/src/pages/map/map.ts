@@ -23,7 +23,7 @@ export class MapPage {
     private loader:LoaderProvider) {
   }
   ionViewDidLoad() {
-    this.loader.disp_loader('Cargando mapa...Se necesita habilitar GPS e internet');
+    this.loader.disp_loader('Cargando mapa...');
     this.map.loadMap().then(
       (resolve)=>{
         this.reciver.init();

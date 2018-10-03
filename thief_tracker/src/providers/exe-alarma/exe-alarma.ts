@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 import { AdminZonaAProvider } from '../admin-zona-a/admin-zona-a';
 import { ZAgeneratorProvider } from '../z-agenerator/z-agenerator';
+import { LoaderProvider } from '../loader/loader';
 
 /*
   Generated class for the ExeAlarmaProvider provider.
@@ -19,7 +20,8 @@ export class ExeAlarmaProvider {
   // loader;
 
   constructor(public http: HttpClient, private alerCtrl: AlertController,
-    private admZA:AdminZonaAProvider, private za_creator:ZAgeneratorProvider) {
+    private admZA:AdminZonaAProvider, private za_creator:ZAgeneratorProvider,
+    private loader:LoaderProvider) {
     console.log('Hello ExeAlarmaProvider Provider');
   }
 
@@ -66,8 +68,10 @@ export class ExeAlarmaProvider {
   }
   exeAlarm(){
     this.cancel();
+    this.loader.disp_loader('Generando alarma...');
     this.za_creator.newZA().then(
       (zA) => {
+        this.loader.dismiss_loader();
         this.admZA.loc_recepcionZonaA(zA);
         console.log("Alarma activada!!!!");
       }

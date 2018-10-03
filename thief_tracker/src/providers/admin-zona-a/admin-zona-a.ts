@@ -32,7 +32,7 @@ export class AdminZonaAProvider {
   loc_recepcionZonaA(zA:ZonaA){
     // Observer next method for local new zA event
     this.reporter.add(zA);
-    this.loader.disp_loader('Publicando alarma...Espere por favor');
+    this.loader.disp_loader('Publicando alarma...');
   }
   loc_eliminarZonaA(zA:ZonaA){
     // Observer next method for local deleted zA event

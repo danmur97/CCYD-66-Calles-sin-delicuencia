@@ -32,6 +32,10 @@ export class MapPage {
     private map:MapProvider,private reciver:RecibidorProvider) {
   }
   ionViewDidLoad() {
-    this.map.loadMap();
+    this.map.loadMap().then(
+      (resolve)=>{
+        this.reciver.init();
+      }
+    );
   }
 }

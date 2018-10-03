@@ -6,6 +6,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 // import { AdminZonaAProvider } from '../admin-zona-a/admin-zona-a';
 import { ZonaA } from '../../models/zonaA';
 import { AdminZonaAProvider } from '../admin-zona-a/admin-zona-a';
+import { DebugToastProvider } from '../debug-toast/debug-toast';
 /*
   Generated class for the RecibidorProvider provider.
 
@@ -14,40 +15,38 @@ import { AdminZonaAProvider } from '../admin-zona-a/admin-zona-a';
 */
 @Injectable()
 export class RecibidorProvider {
+
   private afList: AngularFireList<any>;
-  constructor(public http: HttpClient, private afDB: AngularFireDatabase, private zona:AdminZonaAProvider) {
+  
+  constructor(public http: HttpClient, private afDB: AngularFireDatabase, 
+    private zona:AdminZonaAProvider, private dtConsole:DebugToastProvider) {
     console.log('Hello RecividorProvider Provider');
-    this.init();
   }
   init(){
+    this.dtConsole.log('Receiver init');
     this.afList = this.afDB.list('alarmas');
-    // this.afList.snapshotChanges(['child_added']).subscribe(
+    
     this.afList.stateChanges(['child_added']).subscribe(
       item =>{
+        console.log('Receiver detected: added data');
+        console.log(item);
+        console.log('-------------');
+
         let zA = new ZonaA(item.payload.val());
         zA.set_id(item.key);
         this.zona.ext_recepcionZonaA(zA);
-        this.newObj_listener(zA);
       }
     );
-    // this.afList.snapshotChanges(['child_removed']).subscribe(
     this.afList.stateChanges(['child_removed']).subscribe(
       item =>{
+        console.log('Receiver detected: removed data');
+        console.log(item);
+        console.log('-------------');
+
         let zA = new ZonaA(item.payload.val());
         zA.set_id(item.key);
         this.zona.ext_eliminarZonaA(zA);
-        this.deletedObj_listener(zA);
       }
     );
-  }
-  newObj_listener(item:any){
-    console.log('Added data!');
-    console.log(item);
-    console.log('-------------');
-  }
-  deletedObj_listener(item:any){
-    console.log('Removed data!');
-    console.log(item);
-    console.log('-------------');
   }
 }

@@ -16,8 +16,16 @@ export class ZAgeneratorProvider {
     // private gps:GpsProvider
     console.log('Hello ZAgeneratorProvider Provider');
   }
-  newZA(){
-    return new ZonaA({id:"",usuario:"Danmur",fecha:"01.10.18",posicionGPS:this.gps.getFakePosition()});
-    // return new ZonaA(id,user,fecha,this.gps.getFakePosition());
+
+  newZA():Promise<ZonaA>{
+    return new Promise(
+      (resolve, reject) => {
+        this.gps.getPosition(false).then(
+          (p) => {
+            resolve(new ZonaA({id:"",usuario:"Danmur",fecha:"01.10.18",posicionGPS:p}) );
+          }
+        );
+      }
+    );
   }
 }

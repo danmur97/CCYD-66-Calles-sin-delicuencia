@@ -38,9 +38,12 @@ export class MapProvider {
     if (this.map == null){
       this.mapOptions = {
         camera: {
-          target: p
+          target: p,
+          zoom: 20
         },
-        zoom: 15
+        controls: {
+          zoom: true
+        }
       };
     }
   }

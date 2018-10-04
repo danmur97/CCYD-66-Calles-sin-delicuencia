@@ -17,4 +17,7 @@ export class CmdAlarmaProvider {
   alarm(){
     this.exeAlarm.showConfirmation();
   }
+  falseAlarm(){
+    this.exeAlarm.falseAlarm();
+  }
 }

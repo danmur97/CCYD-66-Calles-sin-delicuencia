@@ -14,29 +14,31 @@ export class ZonaA_map {
             icon: icon,
             animation: 'DROP',
             position: p,
-            // {lat: 43.0741904,lng: -89.3809802},
-            draggable: true
+            draggable: false
         });
         let circle3:Circle = this.map.addCircleSync({
             center: marker.getPosition(),
             radius: 25,
-            fillColor: "rgba(0,0,255,0.5)",
+            fillColor: "rgba(253,173,94,0.5)",
             strokeColor: "rgba(0,0,0,0)",
-            strokeWidth: 1
+            strokeWidth: 1,
+            zIndex: 1
         });
         let circle2:Circle = this.map.addCircleSync({
             center: marker.getPosition(),
             radius: 13,
-            fillColor: "rgba(255,255,0,0.5)",
+            fillColor: "rgba(255,135,55,0.5)",
             strokeColor: "rgba(0,0,0,0)",
-            strokeWidth: 1
+            strokeWidth: 1,
+            zIndex: 2
         });
         let circle1:Circle = this.map.addCircleSync({
             center: marker.getPosition(),
             radius: 5,
-            fillColor: "rgba(255,0,0,0.5)",
+            fillColor: "rgba(255,60,60,0.5)",
             strokeColor: "rgba(0,0,0,0)",
-            strokeWidth: 1
+            strokeWidth: 1,
+            zIndex: 3
         });
         marker.bindTo("position",circle1,"center");
         marker.bindTo("position",circle2,"center");

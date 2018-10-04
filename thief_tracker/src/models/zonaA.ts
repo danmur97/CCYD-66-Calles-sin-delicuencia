@@ -2,6 +2,7 @@ import { User } from "../providers";
 import { ZonaA_map } from "./zonaA_map";
 import { GoogleMap } from "@ionic-native/google-maps";
 import { Posicion } from "./posicion";
+import { _user } from "../app/app.module";
 
 export class ZonaA {
     private id: string;
@@ -29,10 +30,10 @@ export class ZonaA {
     }
     show(map:GoogleMap){
         this.map_zone = new ZonaA_map(map);
-        if(this.usuario == "Hmurcia"){
-            this.map_zone.show(this.posicionGPS,'yellow');
+        if(this.usuario == _user){
+            this.map_zone.show(this.posicionGPS,'red');
         }else{
-            this.map_zone.show(this.posicionGPS,'blue');
+            this.map_zone.show(this.posicionGPS,'yellow');
         }  
     }
     remove(){

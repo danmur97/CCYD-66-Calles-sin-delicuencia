@@ -33,7 +33,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { DebugToastProvider } from '../providers/debug-toast/debug-toast';
 import { LoaderProvider } from '../providers/loader/loader';
 
-
+export const _user: string = "Danmur";
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: HttpClient) {

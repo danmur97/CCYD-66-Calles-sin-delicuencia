@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GpsProvider } from '../gps/gps';
 import { ZonaA } from '../../models/zonaA';
+import { _user } from '../../app/app.module';
 
 /*
   Generated class for the ZAgeneratorProvider provider.
@@ -22,7 +23,7 @@ export class ZAgeneratorProvider {
       (resolve, reject) => {
         this.gps.getPosition(false).then(
           (p) => {
-            resolve(new ZonaA({id:"",usuario:"Hmurcia",fecha:"01.10.18",posicionGPS:p}) );
+            resolve(new ZonaA({id:"",usuario:_user,fecha:"01.10.18",posicionGPS:p}) );
           }
         );
       }

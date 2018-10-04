@@ -19,16 +19,18 @@ export class AdminZonaAProvider {
   zonasA_user:ZonaA[] = [];
   zonasA_external:ZonaA[]  = [];
   user = "Hmurcia";
-
+  last_alarms:string[]=[];
   constructor(public http: HttpClient,private map:MapProvider,
     private reporter:ReportadorProvider,private loader:LoaderProvider,
     private dtConsole:DebugToastProvider) {
     console.log('Hello AdminZonaAProvider Provider');
   }
   getLastZA():ZonaA{
-    return this.zonasA_user[this.zonasA_user.length-1];
-    //!!!!!!!!!!!!!!!!!!!!!!---------BUG----!!!!!!!!!!!!!!!!!!!!
-    // index is not numerical
+    if(this.last_alarms.length > 0){
+      return this.zonasA_user[this.last_alarms.pop()];
+    }else{
+      return null;
+    }
   }
 
   loc_recepcionZonaA(zA:ZonaA){
@@ -45,6 +47,7 @@ export class AdminZonaAProvider {
     console.log('External reception (added) called');
     if(zA.usuario == this.user){
       this.zonasA_user[zA.get_id()] = zA;
+      this.last_alarms.push(zA.get_id());
       this.loader.dismiss_loader();
       this.dtConsole.log2('External reception (added): User zone recieved');
     }else{

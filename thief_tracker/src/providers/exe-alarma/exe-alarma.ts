@@ -4,6 +4,7 @@ import { AlertController } from 'ionic-angular';
 import { AdminZonaAProvider } from '../admin-zona-a/admin-zona-a';
 import { ZAgeneratorProvider } from '../z-agenerator/z-agenerator';
 import { LoaderProvider } from '../loader/loader';
+import { DebugToastProvider } from '../debug-toast/debug-toast';
 
 /*
   Generated class for the ExeAlarmaProvider provider.
@@ -21,7 +22,7 @@ export class ExeAlarmaProvider {
 
   constructor(public http: HttpClient, private alerCtrl: AlertController,
     private admZA:AdminZonaAProvider, private za_creator:ZAgeneratorProvider,
-    private loader:LoaderProvider) {
+    private loader:LoaderProvider, private dtConsole:DebugToastProvider) {
     console.log('Hello ExeAlarmaProvider Provider');
   }
 
@@ -91,8 +92,13 @@ export class ExeAlarmaProvider {
         {
           text: 'Si',
           handler: () => {
-            this.admZA.loc_eliminarZonaA(this.admZA.getLastZA());
-            console.log("Alarma desactivada");
+          let za = this.admZA.getLastZA();
+            if(za != null){
+              this.admZA.loc_eliminarZonaA(za);
+              this.dtConsole.log2("Alarma desactivada");
+            }else{
+              this.dtConsole.log2("No hay alarmas para elimirar");
+            }       
           }
         }
       ]

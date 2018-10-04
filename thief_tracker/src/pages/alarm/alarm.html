@@ -13,10 +13,12 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-buttons>
-    <button ion-button (click)="alarmBtnAction()">
-        <ion-icon name="home">Alarm!</ion-icon>
-    </button>
-  </ion-buttons>
+<ion-content text-center>
+  <button (click)="pressed()">
+    <img src="{{btn_img}}"/>
+  </button>
+  <br>
+  <button ion-button round id="fa_btn" (click)="falseAlarm()">
+    <ion-icon name="remove-circle"> Falsa alarma</ion-icon>
+  </button>
 </ion-content>

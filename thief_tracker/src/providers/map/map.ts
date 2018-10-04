@@ -39,7 +39,8 @@ export class MapProvider {
       this.mapOptions = {
         camera: {
           target: p
-        }
+        },
+        zoom: 15
       };
     }
   }

@@ -27,6 +27,8 @@ export class AdminZonaAProvider {
   }
   getLastZA():ZonaA{
     return this.zonasA_user[this.zonasA_user.length-1];
+    //!!!!!!!!!!!!!!!!!!!!!!---------BUG----!!!!!!!!!!!!!!!!!!!!
+    // index is not numerical
   }
 
   loc_recepcionZonaA(zA:ZonaA){

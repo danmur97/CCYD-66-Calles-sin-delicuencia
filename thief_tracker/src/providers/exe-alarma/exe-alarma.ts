@@ -47,7 +47,7 @@ export class ExeAlarmaProvider {
         }
       ]
     });
-    this.confirm.present()
+    this.confirm.present();
   }
   start(){
     this.counter = 10;
@@ -79,7 +79,24 @@ export class ExeAlarmaProvider {
   }
   falseAlarm(){
     // Eliminar ultima ZA creada por el usuario
-    this.admZA.loc_eliminarZonaA(this.admZA.getLastZA());
-    console.log("Alarma desactivada");
+    this.confirm = this.alerCtrl.create({
+      title: 'Falsa alarma?',
+      enableBackdropDismiss: false,
+      message: 'La ultima alarma que generaste sera eliminada. Seguro?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {}
+        },
+        {
+          text: 'Si',
+          handler: () => {
+            this.admZA.loc_eliminarZonaA(this.admZA.getLastZA());
+            console.log("Alarma desactivada");
+          }
+        }
+      ]
+    });
+    this.confirm.present();
   }
 }

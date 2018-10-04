@@ -67,6 +67,7 @@ export class AdminZonaAProvider {
     if(!(zA_user == null)){
       this.dtConsole.log2('External reception (deleted): User zone recieved');
       this.zonasA_user.splice(this.zonasA_user.indexOf(zA_user), 1);
+      this.loader.dismiss_loader();
       this.map.remove(zA_user);
     }else if(!(zA_ext == null)){
       this.dtConsole.log2('External reception (deleted): NOT user zone recieved');

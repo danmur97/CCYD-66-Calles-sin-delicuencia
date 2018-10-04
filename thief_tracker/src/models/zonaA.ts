@@ -29,7 +29,11 @@ export class ZonaA {
     }
     show(map:GoogleMap){
         this.map_zone = new ZonaA_map(map);
-        this.map_zone.show(this.posicionGPS);
+        if(this.usuario == "Hmurcia"){
+            this.map_zone.show(this.posicionGPS,'yellow');
+        }else{
+            this.map_zone.show(this.posicionGPS,'blue');
+        }  
     }
     remove(){
         this.map_zone.remove();

@@ -8,10 +8,10 @@ export class ZonaA_map {
     constructor(map:GoogleMap) {
         this.map = map;
     }
-    show(p:Posicion){
+    show(p:Posicion,icon:string){
         let marker: Marker = this.map.addMarkerSync({
             title: 'Alarm',
-            icon: 'red',
+            icon: icon,
             animation: 'DROP',
             position: p,
             // {lat: 43.0741904,lng: -89.3809802},

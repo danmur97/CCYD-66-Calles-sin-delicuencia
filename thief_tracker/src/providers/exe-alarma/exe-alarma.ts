@@ -92,14 +92,13 @@ export class ExeAlarmaProvider {
         {
           text: 'Si',
           handler: () => {
-            this.loader.disp_loader('Eliminando alarma...');
             let za = this.admZA.getLastZA();
             if(za != null){
+              this.loader.disp_loader('Eliminando alarma...');
               this.admZA.loc_eliminarZonaA(za);
               this.dtConsole.log2("Alarma desactivada");
             }else{
-              this.loader.dismiss_loader();
-              this.dtConsole.log2("No hay alarmas para elimirar");
+              this.dtConsole.message("No hay alarmas para elimirar");
             }       
           }
         }

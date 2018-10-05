@@ -20,4 +20,10 @@ export class TabsPage {
 
   constructor(public navCtrl: NavController) {
   }
+  toSettings(){
+    this.navCtrl.push('SettingsPage');
+  }
+  toTutorial(){
+
+  }
 }

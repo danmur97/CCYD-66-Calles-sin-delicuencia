@@ -22,12 +22,12 @@ export class GpsProvider {
           (resp) => {
             if(!true_gps){
               // successFx(new Posicion(resp.coords.latitude+Math.random(),resp.coords.longitude+Math.random()),obj);
-              resolve(new Posicion(resp.coords.latitude+Math.random()*0.0002,resp.coords.longitude+Math.random()*0.0002));
+              resolve(new Posicion(resp.coords.latitude+Math.random()*0.0004,resp.coords.longitude+Math.random()*0.0004));
             }else{
               // successFx(new Posicion(resp.coords.latitude,resp.coords.longitude),obj);
               resolve(new Posicion(resp.coords.latitude,resp.coords.longitude));
             }
-            this.dtConsole.log2('Success getting location');
+            console.log('Success getting location. Returned '+true_gps+' location');
           }
         ).catch(
           (error) => {

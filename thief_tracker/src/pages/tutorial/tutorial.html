@@ -7,7 +7,7 @@
 <ion-content>
   <ion-slides pager>
 
-    <!-- <ion-slide *ngFor="let slide of slides">
+    <ion-slide *ngFor="let slide of slides">
       <ion-toolbar>
         <ion-buttons end>
           <button ion-button color="primary" (click)="toMain()">Skip</button>
@@ -19,11 +19,9 @@
       <img src="{{slide.image2}}" class="slide-image"/>
       <p [innerHTML]="slide.description2"></p>
       <p [innerHTML]="slide.final"></p>
-    </ion-slide> -->
+    </ion-slide>
 
     <ion-slide>
-        <img src="../assets/tut/img4.png"/>
-        <img src="../assets/images/icon.png"/>
       <button ion-button large clear icon-end color="primary" (click)="toMain()">
         Continue
         <ion-icon name="arrow-forward"></ion-icon>

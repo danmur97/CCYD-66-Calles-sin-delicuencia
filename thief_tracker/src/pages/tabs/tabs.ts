@@ -24,6 +24,6 @@ export class TabsPage {
     this.navCtrl.push('SettingsPage');
   }
   toTutorial(){
-
+    this.navCtrl.setRoot('TutorialPage');
   }
 }

@@ -1,11 +1,21 @@
-<ion-header text-center>
-    <button ion-button (click)="toTutorial()">
-        <ion-icon name="help-circle"></ion-icon>
-    </button>
-    <ion-badge item-end>Thieft Tracker</ion-badge>
-    <button ion-button (click)="toSettings()">
-        <ion-icon name="settings"></ion-icon>
-    </button>
+<ion-header>
+    <ion-grid>
+        <ion-row justify-content-between>
+            <ion-col text-center>
+                <button ion-button (click)="toTutorial()">
+                    <ion-icon name="help-circle"></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col col-auto>
+                <img src="../assets/images/icon2.png" class="icon2"/>
+            </ion-col>
+            <ion-col text-center>
+                <button ion-button (click)="toSettings()">
+                    <ion-icon name="settings"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-header>
 <ion-tabs>
     <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" tabIcon="map"></ion-tab>

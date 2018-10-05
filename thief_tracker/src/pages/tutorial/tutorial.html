@@ -6,8 +6,7 @@
 
 <ion-content>
   <ion-slides pager>
-
-    <ion-slide *ngFor="let slide of slides">
+    <ion-slide class="swiper-slide" *ngFor="let slide of slides">
       <ion-toolbar>
         <ion-buttons end>
           <button ion-button color="primary" (click)="toMain()">Skip</button>
@@ -26,6 +25,5 @@
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
     </ion-slide>
-
   </ion-slides>
 </ion-content>

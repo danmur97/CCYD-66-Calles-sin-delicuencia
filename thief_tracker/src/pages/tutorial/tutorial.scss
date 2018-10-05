@@ -1,5 +1,8 @@
 page-tutorial{
-
+    .swiper-slide {
+        overflow-y: scroll;
+        display: block;
+    }
     .toolbar-background {
       background: #fff;
       border-color: transparent;

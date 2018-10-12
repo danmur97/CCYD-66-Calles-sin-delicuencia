@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
 
+import { MapProvider } from '../../providers/map/map';
+import { RecibidorProvider } from '../../providers/recibidor/recibidor';
+import { LoaderProvider } from '../../providers/loader/loader';
 /**
  * Generated class for the MapPage page.
  *
@@ -15,11 +18,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MapPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private map:MapProvider,private reciver:RecibidorProvider,
+    private loader:LoaderProvider) {
   }
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MapPage');
+    this.loader.disp_loader('Cargando mapa...');
+    this.map.loadMap().then(
+      (resolve)=>{
+        this.reciver.init();
+        this.loader.dismiss_loader();
+      }
+    );
   }
-
+  
 }

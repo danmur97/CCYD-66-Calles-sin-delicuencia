@@ -5,14 +5,18 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>alarm</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content text-center>
+  <br>
+  <button (click)="pressed()">
+    <img src="{{btn_img}}"/>
+  </button>
+  <br>
+  <button ion-button round id="fa_btn" (click)="falseAlarm()">
+    <ion-icon name="remove-circle"> Falsa alarma</ion-icon>
+  </button>
 </ion-content>

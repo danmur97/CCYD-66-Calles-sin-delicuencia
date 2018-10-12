@@ -1,15 +1,24 @@
 <ion-header>
-  <ion-buttons>
-      <button ion-button>
-          <ion-icon name="home">Left Icon</ion-icon>
-      </button>
-      <button ion-button>
-          <ion-icon name="home">Left Icon</ion-icon>
-      </button>
-  </ion-buttons>
+    <ion-grid>
+        <ion-row justify-content-between>
+            <ion-col text-center>
+                <button ion-button (click)="toTutorial()">
+                    <ion-icon name="help-circle"></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col col-auto>
+                <img src="../assets/images/icon2.png" class="icon2"/>
+            </ion-col>
+            <ion-col text-center>
+                <button ion-button (click)="toSettings()">
+                    <ion-icon name="settings"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-header>
 <ion-tabs>
-    <ion-tab [root]="tab1Root" [tabTitle]="tab1Title" tabIcon="alert"></ion-tab>
-    <ion-tab [root]="tab2Root" [tabTitle]="tab2Title" tabIcon="book"></ion-tab>
     <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" tabIcon="map"></ion-tab>
+    <ion-tab [root]="tab1Root" [tabTitle]="tab1Title" tabIcon="alert"></ion-tab>
+    <!-- <ion-tab [root]="tab2Root" [tabTitle]="tab2Title" tabIcon="book"></ion-tab> -->
 </ion-tabs>

@@ -1,5 +1,5 @@
 <ion-header>
-  <!-- <ion-navbar>
+  <!-- <ion-navbar *ngIf="!init">
       <ion-title>Tutorial</ion-title>
   </ion-navbar> -->
 </ion-header>
@@ -17,13 +17,16 @@
       <p [innerHTML]="slide.description"></p>
       <p [innerHTML]="slide.description2"></p>
       <p [innerHTML]="slide.final"></p>
+      <br>
+      <br>
+      <br>
     </ion-slide>
 
-    <ion-slide>
+    <!-- <ion-slide>
       <button ion-button large clear icon-end color="primary" (click)="toMain()">
         Continue
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
-    </ion-slide>
+    </ion-slide> -->
   </ion-slides>
 </ion-content>

@@ -6,7 +6,7 @@ import { MapProvider } from '../map/map';
 import { ReportadorProvider } from '../reportador/reportador';
 import { DebugToastProvider } from '../debug-toast/debug-toast';
 import { LoaderProvider } from '../loader/loader';
-import { _user } from '../../app/app.module';
+import { User } from '../user/user';
 
 /*
   Generated class for the AdminZonaAProvider provider.
@@ -22,7 +22,7 @@ export class AdminZonaAProvider {
   last_alarms:string[]=[];
   constructor(public http: HttpClient,private map:MapProvider,
     private reporter:ReportadorProvider,private loader:LoaderProvider,
-    private dtConsole:DebugToastProvider) {
+    private dtConsole:DebugToastProvider, private _user:User) {
     console.log('Hello AdminZonaAProvider Provider');
   }
   getLastZA():ZonaA{
@@ -45,7 +45,7 @@ export class AdminZonaAProvider {
   ext_recepcionZonaA(zA:ZonaA){
     // Observer next method for external new zA event
     console.log('External reception (added) called');
-    if(zA.usuario == _user){
+    if(zA.usuario == this._user.get()){
       this.zonasA_user[zA.get_id()] = zA;
       this.last_alarms.push(zA.get_id());
       this.loader.dismiss_loader();

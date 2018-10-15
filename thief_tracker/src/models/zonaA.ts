@@ -2,7 +2,6 @@ import { User } from "../providers";
 import { ZonaA_map } from "./zonaA_map";
 import { GoogleMap } from "@ionic-native/google-maps";
 import { Posicion } from "./posicion";
-import { _user } from "../app/app.module";
 
 export class ZonaA {
     private id: string;
@@ -28,9 +27,9 @@ export class ZonaA {
         this.fecha = param.fecha;
         this.posicionGPS = param.posicionGPS;
     }
-    show(map:GoogleMap){
+    show(map:GoogleMap, loc_user:string){
         this.map_zone = new ZonaA_map(map);
-        if(this.usuario == _user){
+        if(this.usuario == loc_user){
             this.map_zone.show(this.posicionGPS,'red');
         }else{
             this.map_zone.show(this.posicionGPS,'yellow');

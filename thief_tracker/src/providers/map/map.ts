@@ -4,6 +4,7 @@ import { GoogleMaps, GoogleMap, GoogleMapOptions } from '@ionic-native/google-ma
 import { ZonaA } from '../../models/zonaA';
 import { GpsProvider } from '../gps/gps';
 import { Posicion } from '../../models/posicion';
+import { User } from '..';
 
 /*
   Generated class for the MapProvider provider.
@@ -17,12 +18,12 @@ export class MapProvider {
   map:GoogleMap;
   mapOptions: GoogleMapOptions;
 
-  constructor(public http: HttpClient, private gps:GpsProvider) {
+  constructor(public http: HttpClient, private gps:GpsProvider, private _user:User) {
     console.log('Hello MapProvider Provider');
   }
   show(zA:ZonaA){
     if (!(this.map == null)){
-      zA.show(this.map);
+      zA.show(this.map, this._user.get());
     }else{
       throw "Call to show zA rejected due to indefinite of map"
     }

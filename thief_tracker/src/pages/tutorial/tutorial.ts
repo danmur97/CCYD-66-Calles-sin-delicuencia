@@ -54,7 +54,7 @@ export class TutorialPage {
   }
   toMain(){
     if(this.init){
-      this.navCtrl.setRoot('TabsPage');
+      this.navCtrl.setRoot('LoginPage');
     }else{
       this.navCtrl.pop();
     }
